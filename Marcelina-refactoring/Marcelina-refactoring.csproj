@@ -7,4 +7,10 @@
     <RootNamespace>Marcelina_refactoring</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Marcelina-Application\Marcelina-Application.csproj" />
+    <ProjectReference Include="..\Marcelina-Domain\Marcelina-Domain.csproj" />
+    <ProjectReference Include="..\Marcelina-infrastructure\Marcelina-infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

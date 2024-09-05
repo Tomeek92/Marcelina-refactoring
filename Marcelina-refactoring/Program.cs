@@ -1,8 +1,21 @@
+using Marcelina_Domain.Enties.Users;
+using Microsoft.AspNetCore.Identity;
+using Marcelina_Application.Extensions;
+using Marcelina_infrastructure.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddApplication();
+builder.Services.AddInfrastructure(builder.Configuration);
+builder.Services.AddIdentity<User, IdentityRole>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+    options.User.RequireUniqueEmail = false;
+    options.SignIn.RequireConfirmedPhoneNumber = false;
+    options.SignIn.RequireConfirmedAccount = false;
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
