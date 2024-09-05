@@ -1,5 +1,5 @@
-﻿using Marcelina_Domain.Szkolenia;
-using Marcelina_Domain.Users;
+﻿using Marcelina_Domain.Enties.Szkolenia;
+using Marcelina_Domain.Enties.Users;
 using Marcelina_Domain.Uslugi;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

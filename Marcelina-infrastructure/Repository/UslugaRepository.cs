@@ -2,10 +2,11 @@
 using Marcelina_infrastructure.DbContext;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Marcelina_Domain.Interfaces;
 
 namespace Marcelina_infrastructure.Repository
 {
-    public class UslugaRepository
+    public class UslugaRepository : IUslugaRepository
     {
         private readonly MarcelinaRefactoringDbContext _context;
 
@@ -93,8 +94,12 @@ namespace Marcelina_infrastructure.Repository
                 {
                     throw new KeyNotFoundException($"Nie znaleziono takiej usługi z tym numere id {updateUsluga.Id}");
                 }
-                _context.Uslugi.Update(updateUsluga);
+                _context.Uslugi.Update(existingUsluga);
                 await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Nieoczekiwany błąd podczas aktualizowania {ex.Message}");
             }
         }
     }

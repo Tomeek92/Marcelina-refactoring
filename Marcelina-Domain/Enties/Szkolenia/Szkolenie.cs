@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Marcelina_Domain.Szkolenia
+namespace Marcelina_Domain.Enties.Szkolenia
 {
     public class Szkolenie
     {

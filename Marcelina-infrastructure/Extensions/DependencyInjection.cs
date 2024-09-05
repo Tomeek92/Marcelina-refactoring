@@ -1,4 +1,5 @@
-﻿using Marcelina_infrastructure.DbContext;
+﻿using Marcelina_Domain.Interfaces;
+using Marcelina_infrastructure.DbContext;
 using Marcelina_infrastructure.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,8 +14,8 @@ namespace Marcelina_infrastructure.Extensions
             services.AddDbContext<MarcelinaRefactoringDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("MarcelinaRefactoringDbContext")));
 
-            services.AddScoped<IEventRepository, SzkolenieRepository>();
-            services.AddScoped<IWorkerRepository, UslugaRepository>();
+            services.AddScoped<ISzkolenieRepository, SzkolenieRepository>();
+            services.AddScoped<IUslugaRepository, UslugaRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
         }
     }
