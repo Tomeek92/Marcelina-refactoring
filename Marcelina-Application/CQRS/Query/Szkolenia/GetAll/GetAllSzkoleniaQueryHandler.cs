@@ -3,25 +3,25 @@ using Marcelina_Application.Dto;
 using Marcelina_Domain.Interfaces;
 using MediatR;
 
-namespace Marcelina_Application.CQRS.Query.Szkolenia.GetId
+namespace Marcelina_Application.CQRS.Query.Szkolenia.GetAll
 {
-    public class GetSzkolenieIdCommandHandler : IRequestHandler<GetSzkolenieIdCommand, SzkolenieDto>
+    public class GetAllSzkoleniaQueryHandler : IRequestHandler<GetAllSzkoleniaQuery, IEnumerable<SzkolenieDto>>
     {
         private readonly ISzkolenieRepository _szkolenieRepository;
         private readonly IMapper _mapper;
 
-        public GetSzkolenieIdCommandHandler(ISzkolenieRepository szkolenieRepository, IMapper mapper)
+        public GetAllSzkoleniaQueryHandler(ISzkolenieRepository szkolenieRepository, IMapper mapper)
         {
             _szkolenieRepository = szkolenieRepository;
             _mapper = mapper;
         }
 
-        public async Task<SzkolenieDto> Handle(GetSzkolenieIdCommand request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<SzkolenieDto>> Handle(GetAllSzkoleniaQuery request, CancellationToken cancellationToken)
         {
             try
             {
-                var existingSzkolenie = await _szkolenieRepository.GetElementById(request.Id);
-                var mapp = _mapper.Map<SzkolenieDto>(existingSzkolenie);
+                var getAll = await _szkolenieRepository.GetAll();
+                var mapp = _mapper.Map<IEnumerable<SzkolenieDto>>(getAll);
                 return mapp;
             }
             catch (AutoMapperMappingException ex)

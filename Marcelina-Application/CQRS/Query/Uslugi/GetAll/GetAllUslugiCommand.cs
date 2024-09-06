@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Marcelina_Application.Dto;
+using MediatR;
 
 namespace Marcelina_Application.CQRS.Query.Uslugi.GetAll
 {
-    internal class GetAllUslugiCommand
+    public class GetAllUslugiCommand : IRequest<IEnumerable<UslugaDto>>
     {
     }
 }

@@ -10,7 +10,6 @@ using Marcelina_Application.CQRS.Command.Uslugi.Delete;
 using Marcelina_Application.CQRS.Command.Uslugi.Update;
 using Marcelina_Application.CQRS.Query.Szkolenia.GetAll;
 using Marcelina_Application.CQRS.Query.Szkolenia.GetId;
-using Marcelina_Application.CQRS.Query.Users.GetAll;
 using Marcelina_Application.CQRS.Query.Users.GetId;
 using Marcelina_Application.CQRS.Query.Uslugi.GetAll;
 using Marcelina_Application.CQRS.Query.Uslugi.GetId;
@@ -36,9 +35,8 @@ namespace Marcelina_Application.Extensions
          typeof(UpdateUslugiCommand).Assembly,
          typeof(GetAllUslugiCommand).Assembly,
           typeof(GetUslugiIdCommand).Assembly,
-         typeof(GetAllSzkoleniaCommand).Assembly,
+         typeof(GetAllSzkoleniaQuery).Assembly,
          typeof(GetSzkolenieIdCommand).Assembly,
-         typeof(GetAllUsersCommand).Assembly,
          typeof(GetUserIdCommand).Assembly
 
            ));

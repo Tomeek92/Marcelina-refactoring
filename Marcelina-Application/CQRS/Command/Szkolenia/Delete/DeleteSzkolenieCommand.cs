@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Marcelina_Application.Dto;
+using MediatR;
 
 namespace Marcelina_Application.CQRS.Command.Szkolenia.Delete
 {
-    internal class DeleteSzkolenieCommand
+    public class DeleteSzkolenieCommand : SzkolenieDto, IRequest
     {
+        public int Id { get; set; }
+
+        public DeleteSzkolenieCommand(int id)
+        {
+            Id = id;
+        }
     }
 }

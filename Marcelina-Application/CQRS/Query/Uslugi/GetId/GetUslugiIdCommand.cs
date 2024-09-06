@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Marcelina_Application.Dto;
+using MediatR;
 
 namespace Marcelina_Application.CQRS.Query.Uslugi.GetId
 {
-    internal class GetUslugiIdCommand
+    public class GetUslugiIdCommand : IRequest<UslugaDto>
     {
+        public int Id { get; set; }
+
+        public GetUslugiIdCommand(int id)
+        {
+            Id = id;
+        }
     }
 }

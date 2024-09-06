@@ -14,5 +14,9 @@ namespace Marcelina_Domain.Interfaces
         Task Delete(string id);
 
         Task Update(User user);
+
+        Task<User?> FindByEmailAsync(string? email);
+
+        Task<SignInResult> LoginAsync(User user, string password);
     }
 }

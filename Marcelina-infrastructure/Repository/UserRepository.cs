@@ -9,12 +9,24 @@ namespace Marcelina_infrastructure.Repository
     public class UserRepository : IUserRepository
     {
         private readonly UserManager<User> _userManager;
+        private readonly SignInManager<User> _signInManager;
         private readonly MarcelinaRefactoringDbContext _context;
 
-        public UserRepository(UserManager<User> userManager, MarcelinaRefactoringDbContext context)
+        public UserRepository(UserManager<User> userManager, MarcelinaRefactoringDbContext context, SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _context = context;
+            _signInManager = signInManager;
+        }
+
+        public async Task<User?> FindByEmailAsync(string email)
+        {
+            return await _userManager.FindByEmailAsync(email);
+        }
+
+        public async Task<SignInResult> LoginAsync(User user, string password)
+        {
+            return await _signInManager.PasswordSignInAsync(user.UserName, password, isPersistent: false, lockoutOnFailure: false);
         }
 
         public async Task<IdentityResult> Create(User user, string password)

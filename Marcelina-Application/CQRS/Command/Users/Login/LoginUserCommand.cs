@@ -1,12 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Marcelina_Application.Dto;
+using MediatR;
+using Microsoft.AspNetCore.Identity;
 
 namespace Marcelina_Application.CQRS.Command.Users.Login
 {
-    internal class LoginUserCommand
+    public class LoginUserCommand : IRequest<SignInResult>
     {
+        public UserDto UserDto { get; set; }
+
+        public LoginUserCommand(UserDto userDto)
+        {
+            UserDto = userDto;
+        }
     }
 }
