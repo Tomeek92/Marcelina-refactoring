@@ -1,14 +1,15 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35219.272
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marcelina-refactoring", "Marcelina-refactoring\Marcelina-refactoring.csproj", "{A0A13434-B0D6-4F69-88D6-E849B1F1FB2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marcelina-Application", "Marcelina-Application\Marcelina-Application.csproj", "{0E15BE74-AA40-4546-AEE2-62A8E46AF8AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marcelina-Application", "Marcelina-Application\Marcelina-Application.csproj", "{0E15BE74-AA40-4546-AEE2-62A8E46AF8AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marcelina-Domain", "Marcelina-Domain\Marcelina-Domain.csproj", "{3B454497-08C4-4E65-A293-ED3C03E66109}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marcelina-Domain", "Marcelina-Domain\Marcelina-Domain.csproj", "{3B454497-08C4-4E65-A293-ED3C03E66109}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marcelina-infrastructure", "Marcelina-infrastructure\Marcelina-infrastructure.csproj", "{88D64A4D-504E-462D-BCD0-ECB65884FFDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Marcelina-infrastructure", "Marcelina-infrastructure\Marcelina-infrastructure.csproj", "{88D64A4D-504E-462D-BCD0-ECB65884FFDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarcelinaBlazorUI", "MarcelinaBlazorUI\MarcelinaBlazorUI.csproj", "{A485391D-D421-4639-8416-7DC2D082E22D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A0A13434-B0D6-4F69-88D6-E849B1F1FB2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A0A13434-B0D6-4F69-88D6-E849B1F1FB2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A0A13434-B0D6-4F69-88D6-E849B1F1FB2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A0A13434-B0D6-4F69-88D6-E849B1F1FB2D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0E15BE74-AA40-4546-AEE2-62A8E46AF8AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0E15BE74-AA40-4546-AEE2-62A8E46AF8AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E15BE74-AA40-4546-AEE2-62A8E46AF8AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -32,6 +29,10 @@ Global
 		{88D64A4D-504E-462D-BCD0-ECB65884FFDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88D64A4D-504E-462D-BCD0-ECB65884FFDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88D64A4D-504E-462D-BCD0-ECB65884FFDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A485391D-D421-4639-8416-7DC2D082E22D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A485391D-D421-4639-8416-7DC2D082E22D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A485391D-D421-4639-8416-7DC2D082E22D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A485391D-D421-4639-8416-7DC2D082E22D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

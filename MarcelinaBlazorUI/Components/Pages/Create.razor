@@ -1,0 +1,149 @@
+﻿@page "/create"
+@namespace YourAppNamespace.Pages
+@inherits LayoutComponentBase
+
+
+
+<body>
+    
+    <header>
+        <img src="FilmsAndPhotos/logo_znak_wodny_bialy.png" alt="logo-home" class="logo-home">
+        <br>
+        <br>
+        <div class="container lime pullUp">
+            <div class="menu-toggle" id="menu-toggle">&#9776;</div>
+            <div class="menu-list" id="menu-list">
+                <NavLink href="/">STRONA GŁÓWNA</NavLink>
+                <NavLink href="/cennik">USŁUGI</NavLink>
+                <NavLink href="/szkolenia">SZKOLENIA</NavLink>
+                <NavLink href="/kontakt">KONTAKT</NavLink>
+                <a href="https://booksy.com/pl-pl/">ZAPISZ SIĘ NA WIZYTĘ!</a>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <span class="bg-watermark">FRYCKOWSKA</span>
+        <div class="cards">
+            <div class="card" @onclick="@(() => NavigateTo("abc"))">
+                <div class="card">
+                    <img src="FilmsAndPhotos/IMG_5144.JPG" alt="about me" class="img-home1">
+                    <div class="card-content">
+                        <h3>O mnie</h3>
+                        <p>Dowiedz się więcej o mnie</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="card" @onclick="@(() => NavigateTo("szkolenia"))">
+                <img src="FilmsAndPhotos/IMG_5137.JPG" alt="about course" class="img-home2">
+                <div class="card-content">
+                    <h3>Szkolenia</h3>
+                    <p>sprawdź dostępne szkolenia</p>
+                </div>
+            </div>
+            <div class="card" @onclick="@(() => NavigateTo("cennik"))">
+                <div class="card">
+                    <img src="FilmsAndPhotos/IMG_3126.jpeg" alt="about price" class="img-home3">
+                    <div class="card-content">
+                        <h3>Usługi</h3>
+                        <p>Sprawdź moje usługi</p>
+                    </div>
+                </div>
+            </div>
+        
+    </section>
+
+    <footer>
+        <ul class="socialMedia">
+            
+            <li>
+                <a href="https://www.threads.net/marcelinafryckowska.pmu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                         class="socialMedia" viewBox="0 0 16 16">
+                        <!-- Threads Icon SVG -->
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/marcelinafryckowska.pmu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                         class="socialMedia" viewBox="0 0 16 16">
+                        <!-- Instagram Icon SVG -->
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.facebook.com/marcelina.fryckowska">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                         class="socialMedia" viewBox="0 0 16 16">
+                        <!-- Facebook Icon SVG -->
+                    </svg>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.tiktok.com/fryckowska.beauty">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor"
+                         class="socialMedia" viewBox="0 0 16 16">
+                        <!-- TikTok Icon SVG -->
+                    </svg>
+                </a>
+            </li>
+        </ul>
+
+        <div class="footer-section">
+            <h3>Ważne linki</h3>
+            <ul>
+                <li><NavLink href="/">Strona główna</NavLink></li>
+                <li><NavLink href="/przeciwskazania">Przeciwskazania do zabiegu pigmentacji</NavLink></li>
+                <li><NavLink href="/przygotowanie">Przygotowanie się do zabiegu</NavLink></li>
+                <li><NavLink href="/zalecenia-brwi">Zalecenia po zabiegu pigmentacji brwi</NavLink></li>
+                <li><NavLink href="/zalecenia-usta">Zalecenia po zabiegu pigmentacji ust</NavLink></li>
+                <li><a href="https://booksy.com/pl-pl/">Zapisz się na wizytę!</a></li>
+            </ul>
+        </div>
+
+        <div class="newsletter-section">
+            <h3>Newsletter</h3>
+            <p>Bądź na bieżąco i zapisz się!</p>
+            <EditForm Model="@newsletterModel" OnValidSubmit="SaveNewsletter">
+                <InputText id="emailUser" @bind-Value="newsletterModel.Email" placeholder="Enter your email" class="email-newsletter" />
+                <button type="submit">Zapisz się!</button>
+            </EditForm>
+            @if (showToast)
+            {
+                <div id="toastMessage" class="toast-message">
+                    <span id="toastText">Zostałeś zapisany!</span>
+                    <button @onclick="CloseToast">&times;</button>
+                </div>
+            }
+        </div>
+    </footer>
+
+    @code {
+        private NewsletterModel newsletterModel = new();
+        private bool showToast = false;
+
+        private void SaveNewsletter()
+        {
+            // Logika zapisu do bazy danych
+            showToast = true;
+        }
+
+        private void CloseToast()
+        {
+            showToast = false;
+        }
+
+        private void NavigateTo(string page)
+        {
+          //  NavigationManager.NavigateTo($"/{page}");
+        }
+
+        public class NewsletterModel
+        {
+            public string Email { get; set; }
+        }
+    }
+</body>
+
