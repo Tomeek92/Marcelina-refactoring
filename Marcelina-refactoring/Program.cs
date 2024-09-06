@@ -2,6 +2,7 @@ using Marcelina_Domain.Enties.Users;
 using Microsoft.AspNetCore.Identity;
 using Marcelina_Application.Extensions;
 using Marcelina_infrastructure.Extensions;
+using Marcelina_infrastructure.DbContext;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +16,9 @@ builder.Services.AddIdentity<User, IdentityRole>(options =>
     options.User.RequireUniqueEmail = false;
     options.SignIn.RequireConfirmedPhoneNumber = false;
     options.SignIn.RequireConfirmedAccount = false;
-});
+})
+    .AddEntityFrameworkStores<MarcelinaRefactoringDbContext>()
+    .AddDefaultTokenProviders();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

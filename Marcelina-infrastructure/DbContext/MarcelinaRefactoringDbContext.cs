@@ -11,5 +11,9 @@ namespace Marcelina_infrastructure.DbContext
         public DbSet<User> Users { get; set; }
         public DbSet<Szkolenie> Szkolenia { get; set; }
         public DbSet<Usluga> Uslugi { get; set; }
+
+        public MarcelinaRefactoringDbContext(DbContextOptions<MarcelinaRefactoringDbContext> options) : base(options)
+        {
+        }
     }
 }
