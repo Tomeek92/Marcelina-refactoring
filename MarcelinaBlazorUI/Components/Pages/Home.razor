@@ -1,30 +1,55 @@
 ﻿@page "/"
-
+@inject IJSRuntime JSRuntime
 
 <div class="swiper-container">
     <div class="swiper-wrapper">
-        <div class="swiper-slide">Slide 1</div>
-        <div class="content" data-content="one">
-        <h1>Marcelina Fryckowska</h1>
-        <p>   Od 2016 roku jestem aktywnie zaangażowana w branżę beauty. Moja przygoda rozpoczęła się jako stylistka rzęs. Z ambicją i determinacją rozwijałam swoją karierę wielokrotnie zdobywając podium na mistrzostwach stylizacji rzęs oraz osiągając poziom instruktora. Wraz z rosnącym doświadczeniem zostałam sędzią na mistrzostwach, prelegentem oraz organizatorem takich wydarzeń.
-
-   W dziedzinie makijażu permanentnego zaczęłam działać od 2022 roku, a szczególne miejsce w moim sercu zajmuje pigmentacja ust.
-   </p>
-   </div>
-   <div class="background" data-item="two">
-    <h1>Marcelina Fryckowska</h1>
-        <p>   Od 2016 roku jestem aktywnie zaangażowana w branżę beauty. Moja przygoda rozpoczęła się jako stylistka rzęs. Z ambicją i determinacją rozwijałam swoją karierę wielokrotnie zdobywając podium na mistrzostwach stylizacji rzęs oraz osiągając poziom instruktora. Wraz z rosnącym doświadczeniem zostałam sędzią na mistrzostwach, prelegentem oraz organizatorem takich wydarzeń.
-
-   W dziedzinie makijażu permanentnego zaczęłam działać od 2022 roku, a szczególne miejsce w moim sercu zajmuje pigmentacja ust.
-   </p>
-   </div>
+        <div class="swiper-slide">
+            <div class="content" data-content="one">
+                <h1>Marcelina Fryckowska</h1>
+                <p>
+                    Od 2016 roku jestem aktywnie zaangażowana w branżę beauty...
+                </p>
+            </div>
+        </div>
+        <div class="background" data-item="two">
+            <h1>Marcelina Fryckowska</h1>
+            <p>
+                W 2016 roku jestem aktywnie zaangażowana w branżę beauty...
+            </p>
+        </div>
     </div>
 
     <div class="swiper-pagination"></div>
 </div>
+<div class="footer">
+    <div class="feature">
+        <i class="fa-solid fa-house"></i>
+        <div>
+            <p>Accommodation</p>
+            <small>5 days</small>
+        </div>
+    </div>
+    <hr />
+    <div class="feature">
+        <i class="fa-solid fa-headphones"></i>
+        <div>
+            <p>Live guide</p>
+            <small>available</small>
+        </div>
+    </div>
+    <div class="feature">
+        <i class="fa-solid fa-clock"></i>
+        <p>Easy Cancelation</p>
+        <small>cancel before 48h</small>
+    </div>
+    <hr />
+    <button class="btn">Book Now</button>
+</div>
 
 
-   
+
+
+
 
 
 

@@ -1,8 +1,8 @@
-﻿using Marcelina_Domain.Uslugi;
+﻿using Marcelina_Domain.Interfaces;
+using Marcelina_Domain.Uslugi;
 using Marcelina_infrastructure.DbContext;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Marcelina_Domain.Interfaces;
 
 namespace Marcelina_infrastructure.Repository
 {
