@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Ignore DbContext i DbContextFactory w folderze Marcelina-infrastructure/DbContext
+Marcelina-infrastructure/DbContext/MarcelinaRefactoringDbContext.cs
+Marcelina-infrastructure/DbContext/MarcelinaRefactoringDbContextFactory.cs

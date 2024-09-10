@@ -8,12 +8,12 @@ namespace Marcelina_infrastructure.DbContext
 {
     public class MarcelinaRefactoringDbContext : IdentityDbContext<User>
     {
-        public DbSet<User> Users { get; set; }
-        public DbSet<Szkolenie> Szkolenia { get; set; }
-        public DbSet<Usluga> Uslugi { get; set; }
-
         public MarcelinaRefactoringDbContext(DbContextOptions<MarcelinaRefactoringDbContext> options) : base(options)
         {
         }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<Szkolenie> Szkolenia { get; set; }
+        public DbSet<Usluga> Uslugi { get; set; }
     }
 }
