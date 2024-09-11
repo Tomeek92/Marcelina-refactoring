@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Marcelina_infrastructure.Migrations
 {
-    [DbContext(typeof(MarcelinaRefactoringDbContext))]
+    [DbContext(typeof(MarcelinaRefactoringDbContextFactory))]
     [Migration("20240910161455_init")]
     partial class init
     {

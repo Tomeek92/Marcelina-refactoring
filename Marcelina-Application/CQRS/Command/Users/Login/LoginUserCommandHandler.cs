@@ -19,6 +19,7 @@ namespace Marcelina_Application.CQRS.Command.Users.Login
 
         public async Task<SignInResult> Handle(LoginUserCommand request, CancellationToken cancellationToken)
         {
+
             try
             {
                 var user = _mapper.Map<User>(request.UserDto);
@@ -27,7 +28,7 @@ namespace Marcelina_Application.CQRS.Command.Users.Login
                 {
                     return SignInResult.Failed;
                 }
-                var result = await _userRepository.LoginAsync(existingUser, request.UserDto.PasswordHash);
+                var result = await _userRepository.LoginAsync(existingUser, request.UserDto.Password);
                 return result;
             }
             catch (AutoMapperMappingException ex)

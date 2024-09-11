@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Marcelina_infrastructure.Migrations
 {
-    [DbContext(typeof(MarcelinaRefactoringDbContext))]
+    [DbContext(typeof(MarcelinaRefactoringDbContextFactory))]
     partial class MarcelinaRefactoringDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

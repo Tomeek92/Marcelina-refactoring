@@ -14,7 +14,7 @@ namespace Marcelina_infrastructure.Extensions
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<MarcelinaRefactoringDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("MarcelinaRefactoringDbContext")));
+            options.UseSqlServer(configuration.GetConnectionString("MarcelinaRefactoring")));
 
             services.AddIdentity<User, IdentityRole>(options =>
             {

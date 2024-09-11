@@ -18,10 +18,11 @@ namespace Marcelina_Application.CQRS.Command.Users.Create
 
         public async Task Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
+
             try
             {
                 var mapp = _mapper.Map<User>(request);
-                var result = await _userRepository.Create(mapp, request.PasswordHash);
+                var result = await _userRepository.Create(mapp, request.Password);
                 if (!result.Succeeded)
                 {
                     throw new Exception("Błąd podczas tworzenia użytkownika: " + string.Join(", ", result.Errors.Select(e => e.Description))); //<- przejść przez wszystkie błędy w kolekcji Errors i wybrać tylko ich opisy (Description), ignorując inne informacje, takie jak kody błędów.

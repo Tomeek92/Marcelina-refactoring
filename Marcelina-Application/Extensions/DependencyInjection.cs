@@ -41,6 +41,8 @@ namespace Marcelina_Application.Extensions
 
            ));
             services.AddAutoMapper(typeof(MapperProfile));
+            services.AddScoped<LoginUserCommandHandler>();
+            services.AddScoped<CreateUserCommandHandler>();
         }
     }
 }

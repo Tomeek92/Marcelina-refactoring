@@ -1,0 +1,50 @@
+﻿@page "/create-user"
+@rendermode InteractiveServer
+@inject CreateUserCommandHandler CreateUserHandler
+@inject NavigationManager NavigationManager
+@using Marcelina_Application.CQRS.Command.Users.Create
+@using Marcelina_Application.Dto
+
+<EditForm method="post" Model="createUserCommand" OnValidSubmit="HandleCreate" FormName="CreateUserAsync">
+    <div class="login-container">
+        <div class="image-container">
+            <img src="Photos/logoznakwodny.png" alt="Obrazek" />
+        </div>
+        <div class="login-form">
+            <h2>Stwórz konto</h2>
+            <label for="username">Nazwa użytkownika:</label>
+            <input type="text" id="username" name="username" @bind-value="createUserCommand.UserName" required>
+
+            <label for="password">Hasło:</label>
+            <input type="password" id="password" name="password" @bind-value="createUserCommand.Password" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" @bind-value="createUserCommand.Email" required>
+
+            <button type="submit">Stwórz konto</button>
+        </div>
+
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="error-message">@errorMessage</div>
+        }
+    </div>
+</EditForm>
+@code {
+    private CreateUserCommand createUserCommand { get; set; } = new(new UserDto());
+    private string? errorMessage;
+
+    private async Task HandleCreate()
+    {
+        using var cancellationTokenSource = new CancellationTokenSource();
+        var cancellationToken = cancellationTokenSource.Token;
+        try
+        {
+            await CreateUserHandler.Handle(createUserCommand,cancellationToken);
+        }
+        catch(Exception ex)
+        {
+            throw new Exception($"Błąd podczas tworzenia użytkownika {ex.Message}");
+        }
+    }
+}

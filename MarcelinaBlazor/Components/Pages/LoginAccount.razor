@@ -1,0 +1,55 @@
+﻿@page "/login-account"
+@rendermode InteractiveServer
+@using Marcelina_Application.CQRS.Command.Users.Login
+@using Marcelina_Application.Dto
+@using Microsoft.AspNetCore.Identity
+@inject LoginUserCommandHandler LoginUserCommandHandler
+@inject NavigationManager NavigationManager
+
+<EditForm method="post" Model="loginCommand" OnValidSubmit="LoginAsync" FormName="LoginAsyncUser">
+    <div class="login-container">
+        <div class="image-container">
+            <img src="Photos/logoznakwodny.png" alt="Obrazek" />
+        </div>
+        <div class="login-form">
+            <h2>Zaloguj się</h2>
+            <label for="username">Nazwa użytkownika:</label>
+            <input type="text" id="username" name="username" @bind-value="loginCommand.UserDto.UserName" required>
+
+            <label for="password">Hasło:</label>
+            <input type="password" id="password" name="password" @bind-value="loginCommand.UserDto.Password" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" @bind-value="loginCommand.UserDto.Email" required>
+
+            <button type="submit">Zaloguj</button>
+        </div>
+
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="error-message">@errorMessage</div>
+        }
+    </div>
+</EditForm>
+
+
+@code {
+    private LoginUserCommand loginCommand { get; set; } = new(new UserDto());
+    private string? errorMessage;
+
+    private async Task<SignInResult> LoginAsync()
+    {
+        using var cancellationTokenSource = new CancellationTokenSource();
+        var cancellationToken = cancellationTokenSource.Token;
+        try
+        {
+            var result = await LoginUserCommandHandler.Handle(loginCommand, cancellationToken);
+            return SignInResult.Success;
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Błąd podczas logowania: " + ex.Message;
+            return SignInResult.Failed;
+        }
+    }
+}
