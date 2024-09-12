@@ -1,0 +1,62 @@
+﻿@page "/create-szkolenie"
+@rendermode InteractiveServer
+@inject CreateSzkolenieCommandHandler CreateSzkolenieHandler
+@inject NavigationManager NavigationManager
+@using Marcelina_Application.CQRS.Command.Szkolenia.Create
+@using Marcelina_Application.Dto
+
+
+<EditForm method="post" Model="createSzkolenie" OnValidSubmit="Create" FormName="CreateSzkolenieAsync">
+    <div class="login-container">
+        <div class="image-container">
+            <img src="Photos/logoznakwodny.png" alt="Obrazek" />
+        </div>
+        <div class="login-form">
+            <h2>Stwórz szkolenie</h2>
+            <label for="name">Nazwa szkolenia:</label>
+            <input type="text" id="szkoleniename" name="szkoleniename" @bind-value="createSzkolenie.Name" />
+
+            <label for="price">Cena:</label>
+            <input type="text" id="szkolenieprice" name="szkolenieprice" @bind-value="createSzkolenie.Price" />
+
+            <label for="category">Kategoria:</label>
+            <input type="text" id="szkoleniecategory" name="szkoleniecategory" @bind-value="createSzkolenie.Category" />
+
+            <button type="submit">Stwórz szkolenie</button>
+        </div>
+        @if (isLoading)
+        {
+            <p>Loading...</p>
+        }
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="error-message">@errorMessage</div>
+        }
+    </div>
+</EditForm>
+
+@code {
+    private CreateSzkolenieCommand createSzkolenie { get; set; } = new();
+    private string? errorMessage;
+    private bool isLoading = false;
+
+    private async Task Create()
+    {
+        isLoading = true;
+        using var cancellationTokenSource = new CancellationTokenSource();
+        var cancellationToken = cancellationTokenSource.Token;
+        try
+        {
+            await CreateSzkolenieHandler.Handle(createSzkolenie, cancellationToken);
+
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Błąd podczas tworzenia Szkolenia {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}
