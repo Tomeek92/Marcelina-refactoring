@@ -24,9 +24,25 @@ namespace Marcelina_infrastructure.Repository
             return await _userManager.FindByEmailAsync(email);
         }
 
-        public async Task<SignInResult> LoginAsync(User user, string password)
+        public async Task<SignInResult> LoginAsync(string userName, string password)
         {
-            return await _signInManager.PasswordSignInAsync(user.UserName, password, isPersistent: false, lockoutOnFailure: false);
+            try
+            {
+                var result = await _signInManager.PasswordSignInAsync(userName, password, isPersistent: false, lockoutOnFailure: false);
+                if (result.Succeeded)
+                {
+                    return SignInResult.Success;
+                }
+                else
+                {
+                    return SignInResult.Failed;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Błąd podczas logowania {ex.Message}");
+            }
+
         }
 
         public async Task<IdentityResult> Create(User user, string password)

@@ -2,18 +2,20 @@
     background-color: white;
     font-family: Arial, sans-serif;
 }
+
 .image-container img {
     width: 70%;
     display: flex;
     justify-content: flex-end;
 }
+
 .login-container {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     height: 100vh;
     background-color: #f8f8f8;
-    padding:0 100px;
+    padding: 0 100px;
 }
 
 .login-form {
@@ -31,33 +33,50 @@
         margin-bottom: 20px;
     }
 
-    .login-form label {
-        color: #D3A365;
-        font-weight: bold;
-        display: block;
-        margin-bottom: 5px;
-    }
+.floating-label {
+    position: relative;
+    margin-bottom: 20px;
+}
 
-    .login-form input {
+    .floating-label input {
         width: 100%;
         padding: 10px;
-        margin-bottom: 20px;
+        font-size: 16px;
         border: 1px solid #ccc;
         border-radius: 5px;
         box-sizing: border-box;
     }
 
-    .login-form button {
-        width: 100%;
-        background-color: #F2D79C; 
-        color: white;
-        border: none;
-        padding: 10px;
-        border-radius: 5px;
-        cursor: pointer;
+    .floating-label label {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        color: #D3A365;
         font-size: 16px;
+        pointer-events: none;
+        transform: translateY(-50%);
+        transition: 0.2s ease all;
     }
 
-        .login-form button:hover {
-            background-color: #D3A365;
-        }
+    .floating-label input:focus + label,
+    .floating-label input:not(:placeholder-shown) + label {
+        top: -10px;
+        left: 10px;
+        font-size: 19px;
+        color: #D3A365;
+    }
+
+.login-form button {
+    width: 100%;
+    background-color: #F2D79C;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+    .login-form button:hover {
+        background-color: #D3A365;
+    }

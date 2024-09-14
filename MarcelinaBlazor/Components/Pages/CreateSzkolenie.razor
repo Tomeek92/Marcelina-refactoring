@@ -13,17 +13,25 @@
         </div>
         <div class="login-form">
             <h2>Stwórz szkolenie</h2>
-            <label for="name">Nazwa szkolenia:</label>
-            <input type="text" id="szkoleniename" name="szkoleniename" @bind-value="createSzkolenie.Name" />
-
-            <label for="price">Cena:</label>
-            <input type="text" id="szkolenieprice" name="szkolenieprice" @bind-value="createSzkolenie.Price" />
-
-            <label for="category">Kategoria:</label>
-            <input type="text" id="szkoleniecategory" name="szkoleniecategory" @bind-value="createSzkolenie.Category" />
+            <br />
+            <div class="floating-label">
+                <input type="text" id="szkoleniename" name="szkoleniename" @bind-value="createSzkolenie.Name" placeholder=" " />
+                <label for="szkoleniename">Nazwa szkolenia</label>
+            </div>
+            <br />
+            <div class="floating-label">
+                <input type="text" id="szkolenieprice" name="szkolenieprice" @bind-value="createSzkolenie.Price" placeholder=" " />
+                <label for="szkolenieprice">Cena</label>
+            </div>
+            <br />
+            <div class="floating-label">
+                <input type="text" id="szkoleniecategory" name="szkoleniecategory" @bind-value="createSzkolenie.Category" placeholder=" " />
+                <label for="szkoleniecategory">Kategoria</label>
+            </div>
 
             <button type="submit">Stwórz szkolenie</button>
         </div>
+
         @if (isLoading)
         {
             <p>Loading...</p>
@@ -34,6 +42,7 @@
         }
     </div>
 </EditForm>
+
 
 @code {
     private CreateSzkolenieCommand createSzkolenie { get; set; } = new();

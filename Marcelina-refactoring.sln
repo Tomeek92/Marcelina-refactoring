@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marcelina-Domain", "Marceli
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Marcelina-infrastructure", "Marcelina-infrastructure\Marcelina-infrastructure.csproj", "{88D64A4D-504E-462D-BCD0-ECB65884FFDC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcelinaBlazor", "MarcelinaBlazor\MarcelinaBlazor.csproj", "{FF46ED07-5104-4B41-8C6F-32F94781C696}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MarcelinaBlazor", "MarcelinaBlazor\MarcelinaBlazor.csproj", "{FF46ED07-5104-4B41-8C6F-32F94781C696}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MarcelinaRefactoringAPI", "MarcelinaRefactoringAPI\MarcelinaRefactoringAPI.csproj", "{C18A7D69-3C02-40DF-AC06-A127091FE6E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{FF46ED07-5104-4B41-8C6F-32F94781C696}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF46ED07-5104-4B41-8C6F-32F94781C696}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF46ED07-5104-4B41-8C6F-32F94781C696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C18A7D69-3C02-40DF-AC06-A127091FE6E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C18A7D69-3C02-40DF-AC06-A127091FE6E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C18A7D69-3C02-40DF-AC06-A127091FE6E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C18A7D69-3C02-40DF-AC06-A127091FE6E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

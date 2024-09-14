@@ -14,6 +14,7 @@ using Marcelina_Application.CQRS.Query.Users.GetId;
 using Marcelina_Application.CQRS.Query.Uslugi.GetAll;
 using Marcelina_Application.CQRS.Query.Uslugi.GetId;
 using Marcelina_Application.Mapper;
+using Marcelina_Domain.Uslugi;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Marcelina_Application.Extensions
@@ -44,6 +45,7 @@ namespace Marcelina_Application.Extensions
             services.AddScoped<LoginUserCommandHandler>();
             services.AddScoped<CreateUserCommandHandler>();
             services.AddScoped<CreateSzkolenieCommandHandler>();
+            services.AddScoped<CreateUslugiCommandHandler>();
         }
     }
 }

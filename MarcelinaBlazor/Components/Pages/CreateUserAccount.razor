@@ -12,18 +12,28 @@
         </div>
         <div class="login-form">
             <h2>Stwórz konto</h2>
-            <label for="username">Nazwa użytkownika:</label>
-            <input type="text" id="username" name="username" @bind-value="createUserCommand.UserName" required>
-
-            <label for="password">Hasło:</label>
-            <input type="password" id="password" name="password" @bind-value="createUserCommand.Password" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" @bind-value="createUserCommand.Email" required>
+            <br />
+            <div class="floating-label">
+                <input type="text" id="username" name="username" @bind-value="createUserCommand.UserName" placeholder=" " required>
+                <label for="username">Nazwa użytkownika:</label>
+            </div>
+            <br />
+            <div class="floating-label">
+                <input type="password" id="password" name="password" @bind-value="createUserCommand.Password" placeholder=" " required>
+                <label for="password">Hasło:</label>
+            </div>
+            <br />
+            <div class="floating-label">
+                <input type="email" id="email" name="email" @bind-value="createUserCommand.Email" placeholder=" " required>
+                <label for="email">Email:</label>
+            </div>
 
             <button type="submit">Stwórz konto</button>
         </div>
-
+        @if(isLoading)
+        {
+            <p>Loading....</p>
+        }
         @if (!string.IsNullOrEmpty(errorMessage))
         {
             <div class="error-message">@errorMessage</div>
@@ -33,18 +43,24 @@
 @code {
     private CreateUserCommand createUserCommand { get; set; } = new(new UserDto());
     private string? errorMessage;
+    private bool isLoading;
 
     private async Task HandleCreate()
     {
+        isLoading = true;
         using var cancellationTokenSource = new CancellationTokenSource();
         var cancellationToken = cancellationTokenSource.Token;
         try
         {
-            await CreateUserHandler.Handle(createUserCommand,cancellationToken);
+            await CreateUserHandler.Handle(createUserCommand, cancellationToken);
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
             throw new Exception($"Błąd podczas tworzenia użytkownika {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
         }
     }
 }

@@ -33,33 +33,56 @@
         margin-bottom: 20px;
     }
 
-    .login-form label {
-        color: #D3A365;
-        font-weight: bold;
-        display: block;
-        margin-bottom: 5px;
-    }
+.floating-label {
+    position: relative;
+    margin-bottom: 20px;
+}
 
-    .login-form input {
+    .floating-label input {
         width: 100%;
         padding: 10px;
-        margin-bottom: 20px;
         border: 1px solid #ccc;
         border-radius: 5px;
         box-sizing: border-box;
-    }
-
-    .login-form button {
-        width: 100%;
-        background-color: #F2D79C;
-        color: white;
-        border: none;
-        padding: 10px;
-        border-radius: 5px;
-        cursor: pointer;
         font-size: 16px;
     }
 
-        .login-form button:hover {
-            background-color: #D3A365;
-        }
+    .floating-label label {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        color: #D3A365;
+        font-size: 16px;
+        pointer-events: none;
+        transform: translateY(-50%);
+        transition: 0.2s ease all;
+    }
+
+    .floating-label input:focus + label,
+    .floating-label input:not(:placeholder-shown) + label {
+        top: -15px;
+        left: 10px;
+        font-size: 19px;
+        color: #D3A365;
+    }
+
+.login-form button {
+    width: 100%;
+    background-color: #F2D79C;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+    .login-form button:hover {
+        background-color: #D3A365;
+    }
+
+.error-message {
+    color: red;
+    font-weight: bold;
+    margin-top: 10px;
+}

@@ -1,0 +1,6 @@
+@MarcelinaRefactoringAPI_HostAddress = http://localhost:5187
+
+GET {{MarcelinaRefactoringAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

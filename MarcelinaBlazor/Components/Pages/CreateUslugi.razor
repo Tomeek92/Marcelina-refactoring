@@ -1,0 +1,65 @@
+﻿@page "/create-uslugi"
+@using Marcelina_Application.CQRS.Command.Uslugi.Create
+@rendermode InteractiveServer
+@inject CreateUslugiCommandHandler CreateUslugiHandler
+
+<EditForm method="post" Model="uslugiCommand" OnValidSubmit="UslugiCreate" FormName="CreateUslugiAsync">
+    <div class="login-container">
+        <div class="image-container">
+            <img src="Photos/logoznakwodny.png" alt="Obrazek" />
+        </div>
+        <div class="login-form">
+            <h2>Stwórz usługę</h2>
+            <br />
+            <div class="floating-label">
+                <input type="text" id="name" name="name" @bind-value="uslugiCommand.Name" placeholder=" " required>
+                <label for="name">Nazwa usługi:</label>
+            </div>
+            <br />
+            <div class="floating-label">
+                <input type="text" id="price" name="price" @bind-value="uslugiCommand.Price" placeholder=" " required>
+                <label for="price">Cena:</label>
+            </div>
+            <br />
+            <div class="floating-label">
+                <input type="text" id="category" name="category" @bind-value="uslugiCommand.Category" placeholder=" " required>
+                <label for="category">Kategoria:</label>
+            </div>
+
+            <button type="submit">Stwórz konto</button>
+        </div>
+        @if (isLoading)
+        {
+            <p>Loading...</p>
+        }
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="error-message">@errorMessage</div>
+        }
+    </div>
+</EditForm>
+@code {
+    private CreateUslugiCommand uslugiCommand = new();
+    private string? errorMessage;
+    private bool isLoading = false;
+
+    private async Task UslugiCreate()
+    {
+        isLoading = true;
+        using var cancellationTokenSource = new CancellationTokenSource();
+        var cancellationToken = cancellationTokenSource.Token;
+        try
+        {
+            await CreateUslugiHandler.Handle(uslugiCommand, cancellationToken);
+        }
+        catch(Exception ex)
+        {
+            throw new Exception($"Błąd podczas tworzenia usługi {ex.Message}");
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+}

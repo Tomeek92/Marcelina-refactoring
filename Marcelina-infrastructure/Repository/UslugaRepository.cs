@@ -46,7 +46,7 @@ namespace Marcelina_infrastructure.Repository
             }
             catch (Exception ex)
             {
-                throw new Exception($"Błąd podczas dodawania zadania", ex);
+                throw new Exception($"Błąd podczas dodawania zadania {ex.Message}");
             }
         }
 

@@ -1,55 +1,88 @@
 ﻿@page "/login-account"
 @rendermode InteractiveServer
+@using MarcelinaBlazor.Service
 @using Marcelina_Application.CQRS.Command.Users.Login
 @using Marcelina_Application.Dto
 @using Microsoft.AspNetCore.Identity
-@inject LoginUserCommandHandler LoginUserCommandHandler
+@using Microsoft.AspNetCore.Components.Forms
+@inject UserServiceBlazor LoginApi
 @inject NavigationManager NavigationManager
 
-<EditForm method="post" Model="loginCommand" OnValidSubmit="LoginAsync" FormName="LoginAsyncUser">
+<EditForm  Model="loginCommand" OnValidSubmit="LoginAsync" FormName="Login">
     <div class="login-container">
         <div class="image-container">
             <img src="Photos/logoznakwodny.png" alt="Obrazek" />
         </div>
         <div class="login-form">
             <h2>Zaloguj się</h2>
-            <label for="username">Nazwa użytkownika:</label>
-            <input type="text" id="username" name="username" @bind-value="loginCommand.UserDto.UserName" required>
-
-            <label for="password">Hasło:</label>
-            <input type="password" id="password" name="password" @bind-value="loginCommand.UserDto.Password" required>
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" @bind-value="loginCommand.UserDto.Email" required>
+            <br />
+            <div class="floating-label">
+                <input type="text" id="username" name="username" @bind-value="loginCommand.UserName" placeholder=" " required>
+                <label for="username">Nazwa użytkownika:</label>
+            </div>
+            <br />
+            <div class="floating-label">
+                <input type="password" id="password" name="password" @bind-value="loginCommand.Password" placeholder=" " required>
+                <label for="password">Hasło:</label>
+            </div>
+            <br />
+            <div class="floating-label">
+                <input type="email" id="email" name="email" @bind-value="loginCommand.Email" placeholder=" " required>
+                <label for="email">Email:</label>
+            </div>
 
             <button type="submit">Zaloguj</button>
         </div>
-
+        @if (isLoading)
+        {
+            <p>Loading...</p>
+        }
         @if (!string.IsNullOrEmpty(errorMessage))
         {
             <div class="error-message">@errorMessage</div>
         }
+        @if (isLoginSuccessful)
+        {
+            <div class="success-message">@successMessage</div>
+        }
     </div>
 </EditForm>
 
-
 @code {
-    private LoginUserCommand loginCommand { get; set; } = new(new UserDto());
+    private LoginUserCommand loginCommand  = new LoginUserCommand();
     private string? errorMessage;
+    private bool isLoading;
+    private bool isLoginSuccessful;
+    private string? successMessage;
 
-    private async Task<SignInResult> LoginAsync()
+    private async Task LoginAsync()
     {
-        using var cancellationTokenSource = new CancellationTokenSource();
-        var cancellationToken = cancellationTokenSource.Token;
         try
         {
-            var result = await LoginUserCommandHandler.Handle(loginCommand, cancellationToken);
-            return SignInResult.Success;
+            isLoading = true;
+            var result = await LoginApi.Login(loginCommand);
+            if (result!=null)
+            {
+                isLoginSuccessful = true;
+                successMessage = "Logowanie zakończone sukcesem!";
+                errorMessage = string.Empty;
+                await Task.Delay(100);
+                NavigationManager.NavigateTo("/");
+            }
+            else
+            {
+                isLoginSuccessful = false;
+                errorMessage = "Niepoprawne dane logowania. Spróbuj ponownie.";
+            }
         }
         catch (Exception ex)
         {
             errorMessage = "Błąd podczas logowania: " + ex.Message;
-            return SignInResult.Failed;
+        }
+        finally
+        {
+            isLoading = false;
         }
     }
 }
+

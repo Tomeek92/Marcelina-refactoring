@@ -17,6 +17,6 @@ namespace Marcelina_Domain.Interfaces
 
         Task<User?> FindByEmailAsync(string? email);
 
-        Task<SignInResult> LoginAsync(User user, string password);
+        Task<SignInResult> LoginAsync(string userName, string password);
     }
 }

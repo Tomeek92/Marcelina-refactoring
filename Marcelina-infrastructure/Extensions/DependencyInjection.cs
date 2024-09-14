@@ -16,20 +16,13 @@ namespace Marcelina_infrastructure.Extensions
             services.AddDbContext<MarcelinaRefactoringDbContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("MarcelinaRefactoring")));
 
-            services.AddIdentity<User, IdentityRole>(options =>
-            {
-                options.SignIn.RequireConfirmedAccount = false;
-                options.User.RequireUniqueEmail = false;
-                options.SignIn.RequireConfirmedPhoneNumber = false;
-                options.SignIn.RequireConfirmedAccount = false;
-            })
-    .AddEntityFrameworkStores<MarcelinaRefactoringDbContext>()
-    .AddDefaultTokenProviders();
+
 
             services.AddScoped<ISzkolenieRepository, SzkolenieRepository>();
             services.AddScoped<IUslugaRepository, UslugaRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<SignInManager<User>>();
+
         }
     }
 }
